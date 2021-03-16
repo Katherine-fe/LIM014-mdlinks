@@ -10,6 +10,7 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 12,
+    sourceType: "module",
   },
   globals: {
     Atomics: 'readonly',

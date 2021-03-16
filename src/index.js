@@ -1,7 +1,6 @@
 const path = require('path');
 const fs = require('fs');
 const marked = require('marked');
-const fetch = require('node-fetch');
 
 // Función que verifica si existe la ruta
 const existsRoute = (route) => (fs.existsSync(route));
@@ -21,22 +20,35 @@ const IsMd = (route) => (path.extname(route));
 
 // Función que lee directorio
 const readDirectorio = (ruta) => fs.readdirSync(ruta);
-console.log(readDirectorio('C:\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\src\\Prueba2'));
 
 // Funcion para convertir route relativa a absoluta
 const convertAbsolute = ((route) => {
   if (!Isabsolute(route)) {
     const newAbsolute = path.resolve(route);
-    return newAbsolute; 
+    return newAbsolute;
   }
   return route;
 });
 // console.log(convertAbsolute('readme2.md'));
 
-module.exports = {
+//Funcion lee todo el directorio y especifica ruta
+const ArrayFilesandDirectories = (route) => {
+  return readDirectorio(route).map(element => // se crea una nueva matriz con los elementos encontrados
+    path.join(route, element)); // une los segmentos de ruta especificados en una ruta
+};
+// console.log(ArrayFilesandDirectories('C:\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\src\\Prueba2'));
+
+// Funcion que devuelva archivos .md -- en proceso
+const searchRoutemd = (route) => {
+  let arrayMdFiles = [];
+  const filePath = convertAbsolute(route);
+};
+
+
+module.exports = {  
   existsRoute,
   IsFile,
   IsMd,
   convertAbsolute,
-  readDirectorio,
-};
+  ArrayFilesandDirectories,
+ };

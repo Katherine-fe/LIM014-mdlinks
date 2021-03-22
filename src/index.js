@@ -1,29 +1,33 @@
 const path = require('path');
 const fs = require('fs');
 const marked = require('marked');
+const fetch = require('node-fetch');
+// const { normalize } = require('path');
 
 // Función que verifica si existe la ruta
 const existsRoute = (route) => (fs.existsSync(route));
 // console.log(existsRoute('/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/src/Prueba2'));
 
 // Función devuelve false si es relativa
-const Isabsolute = (route) => (path.isAbsolute(route));
-// console.log(Isabsolute('readme2.md'));
+const routeIsAbsolute = (route) => (path.isAbsolute(route));
+// console.log(routeIsAbsolute('readme2.md'));
 
 // Función que verifica si es archivo
-const IsFile = ((route) => fs.statSync(route).isFile());
-// console.log(IsFile('C:\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\src/Prueba2\\archivo2.md'));
+const routeIsFile = ((route) => fs.statSync(route).isFile());
+// const normalizar= path.normalize;
+// console.log(routeIsFile('C:/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/src/Prueba2/archivo2.md'));
 
 // Función que extrae si tiene extención .md
-const IsMd = (route) => (path.extname(route));
-// console.log(IsMd('C:\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\src\\Prueba2\\archivo2.md'));
+const routeIsMd = (route) => (path.extname(route));
+// console.log(routeIsM('./src/Prueba2/archivo2.md'));
 
 // Función que lee directorio
 const readDirectorio = (ruta) => fs.readdirSync(ruta);
+// console.log(readDirectorio('./src/Prueba2'));
 
 // Funcion para convertir route relativa a absoluta
 const convertAbsolute = ((route) => {
-  if (!Isabsolute(route)) {
+  if (!routeIsAbsolute(route)) {
     const newAbsolute = path.resolve(route);
     return newAbsolute;
   }
@@ -31,24 +35,86 @@ const convertAbsolute = ((route) => {
 });
 // console.log(convertAbsolute('readme2.md'));
 
-//Funcion lee todo el directorio y especifica ruta
-const ArrayFilesandDirectories = (route) => {
-  return readDirectorio(route).map(element => // se crea una nueva matriz con los elementos encontrados
-    path.join(route, element)); // une los segmentos de ruta especificados en una ruta
-};
-// console.log(ArrayFilesandDirectories('C:\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\src\\Prueba2'));
+// Funcion lee todo el directorio y especifica ruta => se crea una nueva matriz con los elementos encontrados => une los segmentos de ruta especificados en una ruta
+const ArrayFilesandDirectories = (route) => readDirectorio(route).map((element) => path.join(route, element));
+// console.log(ArrayFilesandDirectories('C:/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/src/Prueba2'));
 
-// Funcion que devuelva archivos .md -- en proceso
+// Funcion que devuelva archivos .md
 const searchRoutemd = (route) => {
   let arrayMdFiles = [];
   const filePath = convertAbsolute(route);
+  if (routeIsFile(filePath)) {
+    if (routeIsMd(filePath) === '.md') { // por cada elemento preguntamos si tiene extencion .md y la extrae
+      arrayMdFiles.push(filePath);
+    }
+  } else {
+    ArrayFilesandDirectories(route).forEach((element) => { // recorrido por cada elemento de directorio
+      const filesOfNewRoute = element;
+      const getMDFilesInNewRoute = searchRoutemd(filesOfNewRoute); // recursion searchRoutemd se llama a si mismo
+      arrayMdFiles = arrayMdFiles.concat(getMDFilesInNewRoute);
+    });
+  }
+  return arrayMdFiles;
+};
+// console.log(searchRoutemd('C:/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/src/Prueba2'));
+
+// Funcion que devuelve informacion del archivo
+const readFilePath = (route) => fs.readFileSync(route).toString();
+// console.log(readFilePath('C:/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/src/Prueba2/archivo2.md'));
+
+// Funcion que permite extraer links de archivos y los devuelve en array de objetos
+const extraerLinks = (route) => {
+  const arrayLinks = [];
+  const renderer = new marked.Renderer();
+  searchRoutemd(route).forEach((file) => {
+    renderer.link = (href, title, text) => { // renderer define salida ouput con tres propiedades
+      const linkProperties = {
+        href,
+        text,
+        file,
+      };
+      arrayLinks.push(linkProperties);
+    };
+    marked(readFilePath(file), { renderer });
+  });
+  return arrayLinks;
+};
+// console.log(extraerLinks('/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/prueba'));
+
+// Funcion que retorna 5 propiedades en un array
+const optionValidate = (route) => {
+  const linksArray = extraerLinks(route);
+  const valid = linksArray.map((link) => fetch(link.href)
+    .then((res) => ({
+      href: link.href,
+      text: link.text.substring(0, 50),
+      file: link.file,
+      status: res.status,
+      statusText: res.statusText,
+    }))
+    .catch(() => ({
+      href: link.href,
+      text: link.text,
+      file: link.file,
+      status: 'no status',
+      statusText: 'FAIL',
+    })));
+  return Promise.all(valid);
 };
 
+// optionValidate('./test/Prueba').then((res) => console.log(res)).catch((err) => console.log(err));
+// optionValidate('C:/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/Prueba').then((res) => console.log(res)).catch((err) => console.log(err));
 
-module.exports = {  
+module.exports = {
   existsRoute,
-  IsFile,
-  IsMd,
+  routeIsFile,
+  routeIsMd,
   convertAbsolute,
   ArrayFilesandDirectories,
- };
+  optionValidate,
+  extraerLinks,
+  searchRoutemd,
+  readFilePath,
+  routeIsAbsolute,
+  readDirectorio,
+};

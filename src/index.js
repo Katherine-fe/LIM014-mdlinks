@@ -28,8 +28,7 @@ const readDirectorio = (ruta) => fs.readdirSync(ruta);
 // Funcion para convertir route relativa a absoluta
 const convertAbsolute = ((route) => {
   if (!routeIsAbsolute(route)) {
-    const newAbsolute = path.resolve(route);
-    return newAbsolute;
+    return path.resolve(route);
   }
   return route;
 });

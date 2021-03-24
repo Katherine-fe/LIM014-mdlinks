@@ -4,14 +4,14 @@ const mdlinks = (stringpath, options = {}) => {
   if (!funciones.existsRoute(stringpath)) {
     throw new Error('Ruta invalida');
   }
-  const links = funciones.extraerLinks(stringpath);
-  const links5 = funciones.optionValidate(stringpath);
+  const extractLinks = funciones.extraerLinks(stringpath);
+  const validatedArray = funciones.optionValidate(stringpath);
   return new Promise(
     (resolve) => {
       if (options.validate === true) {
-        resolve(links5);
+        resolve(validatedArray);
       } else if (options.validate === false) {
-        resolve(links);
+        resolve(extractLinks);
       }
     },
   );

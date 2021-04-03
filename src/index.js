@@ -64,7 +64,7 @@ const readFilePath = (route) => fs.readFileSync(route).toString();
 // Funcion que permite extraer links de archivos y los devuelve en array de objetos
 const extraerLinks = (route) => {
   const arrayLinks = [];
-  const renderer = new marked.Renderer();
+  const renderer = new marked.Renderer(); // customizar dependiendo de la sintaxis
   searchRoutemd(route).forEach((file) => {
     renderer.link = (href, title, text) => { // renderer define salida ouput con tres propiedades
       const linkProperties = {
@@ -81,6 +81,7 @@ const extraerLinks = (route) => {
 // console.log(extraerLinks('/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/prueba'));
 
 // Funcion que retorna 5 propiedades en un array
+/*
 const optionValidate = (route) => {
   const linksArray = extraerLinks(route);
   const valid = linksArray.map((link) => fetch(link.href)
@@ -99,8 +100,34 @@ const optionValidate = (route) => {
       statusText: 'FAIL',
     })));
   return Promise.all(valid);
+*/
+const optionValidate = (route) => {
+  const arrayValidate = [];
+  const linksArray = extraerLinks(route);
+  linksArray.forEach((el) => {
+    const obj = { ...el };
+    arrayValidate.push(fetch(el.href)
+      .then((res) => {
+        if ((res.status >= 200) && (res.status <= 399)) {
+          obj.status = res.status;
+          obj.statusText = 'OK';
+          return obj;
+        }
+        obj.status = res.status;
+        obj.statusText = 'FAIL';
+        return obj;
+      })
+      .catch(() => {
+        obj.status = 'no status';
+        obj.statusText = 'FAIL';
+        return obj;
+      }));
+  });
+  return Promise.all(arrayValidate);
 };
 
+// Si se pasa un array vacío a all , la promesa se cumple inmediatamente.
+// se cumple cuando todas las promesas del iterable dado se han cumplido
 // optionValidate('./test/Prueba').then((res) => console.log(res)).catch((err) => console.log(err));
 // optionValidate('C:/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/Prueba').then((res) => console.log(res)).catch((err) => console.log(err));
 

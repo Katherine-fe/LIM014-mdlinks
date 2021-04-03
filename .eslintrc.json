@@ -19,7 +19,7 @@
   "rules": {
     "linebreak-style": 0,
     "semi": "error",
-    "max-len": ["error", { "code": 180 }],
+    "max-len": ["error", { "code": 220 }],
     "no-console": "off"
       }
 }

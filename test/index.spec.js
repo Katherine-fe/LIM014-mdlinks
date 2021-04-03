@@ -151,11 +151,18 @@ describe('extraerLinks', () => {
 
 const resultOptionValidate = [
   {
-    href: 'https://www.figma.com/',
-    text: 'Figma',
+    href: 'https://carlosazaustre.com/manejando-la-asincronia-en-javascript/',
+    text: 'Asíncronía en js',
     file: 'C:\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\test\\Prueba\\carpeta1\\pruebita.md',
-    status: 200,
-    statusText: 'OK',
+    status: 'no status',
+    statusText: 'FAIL',
+  },
+  {
+    href: 'https://www.youtube.com/watchtt',
+    text: 'link de prueba - prueba',
+    file: 'C:\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\test\\Prueba\\carpeta1\\pruebita.md',
+    status: 404,
+    statusText: 'FAIL',
   },
   {
     href: 'https://nodejs.org/es/about/',
@@ -180,32 +187,25 @@ describe('optionValidate', () => {
 
 const resultOptionValidate2 = [
   {
-    href: 'https://nodejs.org/es/about/',
-    text: 'Acerca de Node.js - Documentación oficial',
-    file: 'C:\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\Prueba\\carpeta2\\read.md',
-    status: 200,
-    statusText: 'OK',
-  },
-  {
-    href: 'https://nodejs.org/api/fs.html',
-    text: 'Node.js file system - Documentación oficial',
-    file: 'C:\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\Prueba\\carpeta2\\read.md',
-    status: 200,
-    statusText: 'OK',
-  },
-  {
-    href: 'https://www.youtube.com/watch?v=lPPgY3HLlhQ&t=916s',
-    text: 'Pill de recursión - video',
-    file: 'C:\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\Prueba\\probando.md',
-    status: 200,
-    statusText: 'OK',
-  },
-  {
-    href: 'httpas://nodejs.org/es/abouts/',
-    text: 'Acerca de Node.js - Documentación oficial',
-    file: 'C:\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\Prueba\\probando.md',
+    href: 'https://carlosazaustre.com/manejando-la-asincronia-en-javascript/',
+    text: 'Asíncronía en js',
+    file: 'C:\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\test\\Prueba\\carpeta1\\pruebita.md',
     status: 'no status',
     statusText: 'FAIL',
+  },
+  {
+    href: 'https://www.youtube.com/watchtt',
+    text: 'link de prueba - prueba',
+    file: 'C:\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\test\\Prueba\\carpeta1\\pruebita.md',
+    status: 404,
+    statusText: 'FAIL',
+  },
+  {
+    href: 'https://nodejs.org/es/about/',
+    text: 'Definicón de Node js',
+    file: 'C:\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\test\\Prueba\\Prueba1.md',
+    status: 200,
+    statusText: 'OK',
   },
 ];
 
@@ -213,9 +213,9 @@ describe('optionValidate', () => {
   it('should be a function', () => {
     expect(typeof functions.optionValidate).toBe('function');
   });
-  it('Links encontrados - retornar un array:  file, href, status, statusMessage y text',
+  it('Links encontrados - retornar un array:  file, href y text',
     () => functions
-      .optionValidate('./Prueba')
+      .optionValidate('./test/Prueba')
       .catch((resp) => {
         expect(resp).toEqual(resultOptionValidate2);
       }));

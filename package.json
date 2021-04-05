@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "jest --verbose --coverage",
-    "start": "node src/mdlinks.js",
+    "start": "node src/index.js",
     "pretest": "npm run eslint",
     "eslint": "eslint --ext .js src/ test/"
   },
@@ -25,7 +25,7 @@
   "homepage": "https://github.com/Katherine-fe/LIM014-mdlinks#readme",
   "keywords": [],
   "devDependencies": {
-    "eslint": "^7.21.0",
+    "eslint": "^7.23.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "jest": "^26.6.3"

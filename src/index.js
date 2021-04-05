@@ -80,27 +80,6 @@ const extraerLinks = (route) => {
 };
 // console.log(extraerLinks('/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/prueba'));
 
-// Funcion que retorna 5 propiedades en un array
-/*
-const optionValidate = (route) => {
-  const linksArray = extraerLinks(route);
-  const valid = linksArray.map((link) => fetch(link.href)
-    .then((res) => ({
-      href: link.href,
-      text: link.text.substring(0, 50),
-      file: link.file,
-      status: res.status,
-      statusText: res.statusText,
-    }))
-    .catch(() => ({
-      href: link.href,
-      text: link.text,
-      file: link.file,
-      status: 'no status',
-      statusText: 'FAIL',
-    })));
-  return Promise.all(valid);
-*/
 const optionValidate = (route) => {
   const arrayValidate = [];
   const linksArray = extraerLinks(route);

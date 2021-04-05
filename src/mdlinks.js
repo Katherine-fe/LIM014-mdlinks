@@ -7,6 +7,6 @@ const mdLinks = (path, options) => new Promise((resolve) => {
   }
   resolve(funcs.extraerLinks(absRoute));
 });
-mdLinks('./test/Prueba', { validate: true }).then((response) => { console.log(response); });
+// mdLinks('./test/Prueba', { validate: true }).then((response) => { console.log(response); });
 
 module.exports = { mdLinks };

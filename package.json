@@ -1,18 +1,17 @@
 {
-  "name": "md-links",
+  "name": "md-links-kvsa",
   "version": "0.1.0",
   "description": "md links",
-  "main": "src/index.js",
-  "bin": {
-    "md-links": "src/cli.js"
-  },
+  "main": "src/cli.js",
+  "preferGlobal": true,
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "jest --verbose --coverage",
-    "start": "node src/",
-    "pretest": "npm run eslint"
+    "start": "node src/index.js",
+    "pretest": "npm run eslint",
+    "eslint": "eslint --ext .js src/ test/"
   },
   "repository": {
     "type": "git",
@@ -26,15 +25,21 @@
   "homepage": "https://github.com/Katherine-fe/LIM014-mdlinks#readme",
   "keywords": [],
   "devDependencies": {
-    "eslint": "^7.21.0",
+    "eslint": "^7.23.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "jest": "^26.6.3"
   },
   "dependencies": {
-    "core-util-is": "^1.0.2",
+    "colors": "^1.4.0",
+    "fetch-mock": "^9.11.0",
+    "fetch-mock-jest": "^1.5.1",
+    "jest-fetch-mock": "^3.0.3",
     "markdown-it": "^12.0.4",
     "marked": "^2.0.1",
     "node-fetch": "^2.6.1"
+  },
+  "bin": {
+    "md-links": "src/cli.js"
   }
 }

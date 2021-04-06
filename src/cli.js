@@ -8,4 +8,4 @@ const options = {
   stats: process.argv[3],
   validate: process.argv[4],
 };
-mdLinks.cli(path, options).then((res) => console.log(res)).catch(() => console.log('Ingrese una ruta'));
+mdLinks.cli(path, options).then((res) => console.log(res)).catch(() => console.log('Ingrese una ruta valida'));

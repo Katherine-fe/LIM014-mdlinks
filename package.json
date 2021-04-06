@@ -1,6 +1,6 @@
 {
   "name": "md-links-kvsa",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "md links",
   "main": "src/cli.js",
   "preferGlobal": true,

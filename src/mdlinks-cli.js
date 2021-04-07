@@ -13,14 +13,14 @@ const cli = (path, options) => {
   if (options.stats === '--stats' && options.validate === '--validate') {
     return mdlinks.mdLinks(path, { validate: true }).then((data) => {
       let sValidate = '';
-      sValidate += colors.cyan(`✔ Total: ${stats.totalStats(data)}\n✔ Uniques: ${stats.uniqueStats(data)}\n✖ Broken: ${stats.brokenStats(data)}`);
+      sValidate += colors.white(`✔ Total: ${colors.green(stats.totalStats(data))}\n✔ Uniques: ${colors.green(stats.uniqueStats(data))}\n✖ Broken: ${colors.red(stats.brokenStats(data))}`);
       return sValidate;
     });
   }
   if (options.stats === '--stats') {
     return mdlinks.mdLinks(path, { validate: true }).then((data) => {
       let stat = '';
-      stat += colors.cyan(`✔ Total: ${stats.totalStats(data)}\n✔ Uniques: ${stats.uniqueStats(data)}`);
+      stat += colors.white(`✔ Total: ${colors.green(stats.totalStats(data))}\n✔ Uniques: ${colors.green(stats.uniqueStats(data))}`);
       return stat;
     });
   }
@@ -28,7 +28,8 @@ const cli = (path, options) => {
     return mdlinks.mdLinks(path, { validate: true }).then((data) => {
       let validate = '';
       data.forEach((element) => {
-        validate += colors.cyan(`${element.file} ${element.href} ${element.statusText} ${element.status} ${element.text} \n`);
+        validate += `${colors.italic.yellow(element.file)} ${colors.italic.white(element.href)} ${(element.statusText === 'OK' ? colors.italic.green(element.statusText)
+          : colors.italic.red(element.statusText))} ${element.status === 'no status' ? colors.italic.red(element.status) : colors.italic.green(element.status)} ${colors.italic.cyan(element.text)} \n`;
       });
       return validate;
     });

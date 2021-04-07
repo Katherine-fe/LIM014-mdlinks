@@ -5,11 +5,14 @@
 * [1. Definición del Producto](#1-definición-del-producto)
 * [2. Diagrama de Flujo](#2-diagrama-de-flujo)
 * [3. ¿Cómo Usarlo?](#3-cómo-usarlo)
-* [4. Checklist](#4-checklist)
+* [4. Checklist](#4-sprint-backlog)
+* [5. Checklist](#5-checklist)
 
 ***
 
 ## 1. Definición del Producto
+
+![logo](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/logomdlinks2.png)
 
 Markdown es un lenguaje de marcado muy popular en plataformas que manejan texto planos, tales como GitHub, foros, blogs, entre otros y es muy común encontrarlo por ejemplo en archivos 'README.md'.
 
@@ -19,9 +22,9 @@ Estos archivos suelen contener links los cuales en ocasiones pueden estar rotos 
 
 A continuacion el diagrama de flujo de API y CLI:
 
-[![TEST](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/diagramaAPI.JPG "api")](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/diagramaAPI.JPG "api")
+[![TEST](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/diagramaAPI.JPG "api")](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/diagramaAPI.JPG "api")
 
-[![TEST](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/diagramaCLI.JPG "cli")](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/diagramaCLI.JPG "cli")
+[![TEST](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/diagramaCLI.JPG "cli")](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/diagramaCLI.JPG "cli")
 
 ## 3. ¿Cómo Usarlo?
 
@@ -36,7 +39,7 @@ A continuacion el diagrama de flujo de API y CLI:
 
 Por ejemplo:
 
-![cli](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/mdlinks.JPG)
+![cli](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/mdlinks.JPG)
 
 El _output_ te indica el link , texto y el file. 
 
@@ -44,7 +47,7 @@ El _output_ te indica el link , texto y el file.
 
 ##### `--validate`
 
-![validate](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/validate.JPG)
+![validate](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/validate.JPG)
 
 El _output_ en este caso incluye la palabra `ok` o `fail` después de
 la URL, así como el status de la respuesta recibida a la petición HTTP a dicha
@@ -52,11 +55,11 @@ URL.
 
 ##### `--stats`
 
-![stats](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/stats.JPG)
+![stats](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/stats.JPG)
 
 El _output_ es un texto con estadísticas básicas sobre los links.
 ##### `--stats --validate`
-![statsValidate](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/statsvalidate.JPG)
+![statsValidate](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/statsvalidate.JPG)
 
 El _output_ es un texto con estadísticas básicas sobre los links.
 ### API `mdLinks(path, opts)`
@@ -84,7 +87,11 @@ mdLinks("./test/exampleTe")
     // =>[Error:Enter new path]
   });
 ```
-## 4. Checklist
+## 4. Sprint Backlog
+
+![sprint](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/project.JPG)
+
+## 5. Checklist
 
 ### General
 

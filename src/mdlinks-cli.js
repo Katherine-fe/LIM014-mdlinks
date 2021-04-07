@@ -4,9 +4,10 @@ const mdlinks = require('./mdlinks');
 
 const help = colors.rainbow(`
 ====================== help =======================
-md-links <path-to-file> -- validate
+md-links <path-to-file> --validate
 md-links <path-to-file> --stats
-md-links <path-to-file> -- stats --validate
+md-links <path-to-file> --stats --validate
+md-links <path-to-file> --validate --stats
 ===================================================`);
 
 const cli = (path, options) => {

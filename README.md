@@ -15,8 +15,6 @@ Markdown es un lenguaje de marcado muy popular en plataformas que manejan texto 
 
 Estos archivos suelen contener links los cuales en ocasiones pueden estar rotos o ser no válidos, es por ello que como desarrolladoras se nos pidio crear una librería la cual permitiera leer los archivos markdown como por ejemplo un README.md y verificar sus link, para de esta forma validarlos y ver la cantidad de ellos que contiene el directorio.
 
-![md-links](https://user-images.githubusercontent.com/110297/42118443-b7a5f1f0-7bc8-11e8-96ad-9cc5593715a6.jpg)
-
 ## 2. Diagrama de Flujo
 
 A continuacion el diagrama de flujo de API y CLI:
@@ -25,7 +23,6 @@ A continuacion el diagrama de flujo de API y CLI:
 
 [![TEST](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/diagramaCLI.JPG "cli")](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/diagramaCLI.JPG "cli")
 
-***
 ## 3. ¿Cómo Usarlo?
 
 ### Instalación:hammer:

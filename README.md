@@ -12,7 +12,7 @@
 
 ## 1. Definición del Producto
 
-![logo](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/logomdlinks2.png)
+<div align=”center”>![logo](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/logomdlinks2.png)</div>
 
 Markdown es un lenguaje de marcado muy popular en plataformas que manejan texto planos, tales como GitHub, foros, blogs, entre otros y es muy común encontrarlo por ejemplo en archivos 'README.md'.
 
@@ -22,9 +22,9 @@ Estos archivos suelen contener links los cuales en ocasiones pueden estar rotos 
 
 A continuacion el diagrama de flujo de API y CLI:
 
-[![TEST](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/diagramaAPI.JPG "api")](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/diagramaAPI.JPG "api")
+[![TEST](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/diagramaAPI.JPG "api")](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/diagramaAPI.JPG "api")
 
-[![TEST](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/diagramaCLI.JPG "cli")](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/diagramaCLI.JPG "cli")
+[![TEST](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/diagramaCLI.JPG "cli")](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/diagramaCLI.JPG "cli")
 
 ## 3. ¿Cómo Usarlo?
 

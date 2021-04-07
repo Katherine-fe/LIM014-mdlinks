@@ -2,10 +2,10 @@
 
 ## Índice
 
-* [1. Definición del Producto](#1-preámbulo)
-* [2. Diagrama de Flujo](#2-resumen-del-proyecto)
-* [3. ¿Cómo Usarlo?](#3-objetivos-de-aprendizaje)
-* [4. Checklist](#4-check-list)
+* [1. Definición del Producto](1-definición-del-producto)
+* [2. Diagrama de Flujo](#2-diagrama-de-flujo)
+* [3. ¿Cómo Usarlo?](#3-cómo-usarlo)
+* [4. Checklist](#4-checklist)
 
 ***
 

@@ -12,7 +12,7 @@
 
 ## 1. Definición del Producto
 
-<div align=”center”>![logo](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/logomdlinks2.png)</div>
+![logo](https://raw.githubusercontent.com/Katherine-fe/LIM014-mdlinks/main/img/logomdlinks2.png)
 
 Markdown es un lenguaje de marcado muy popular en plataformas que manejan texto planos, tales como GitHub, foros, blogs, entre otros y es muy común encontrarlo por ejemplo en archivos 'README.md'.
 

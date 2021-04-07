@@ -2,12 +2,12 @@ const colors = require('colors');
 const stats = require('./options');
 const mdlinks = require('./mdlinks');
 
-const help = `
+const help = colors.rainbow(`
 ====================== help =======================
 md-links <path-to-file> -- validate
 md-links <path-to-file> --stats
 md-links <path-to-file> -- stats --validate
-===================================================`;
+===================================================`);
 
 const cli = (path, options) => {
   if (options.stats === '--stats' && options.validate === '--validate') {
@@ -39,7 +39,7 @@ const cli = (path, options) => {
     let links = '';
     console.log(help);
     data.forEach((element) => {
-      links += `${element.file} ${element.href} ${element.text} \n`;
+      links += `${colors.italic.yellow(element.file)} ${colors.italic.white(element.href)} ${colors.italic.cyan(element.text)} \n`;
     });
     return links;
   });

@@ -17,6 +17,13 @@ const cli = (path, options) => {
       return sValidate;
     });
   }
+  if (options.stats === '--validate' && options.validate === '--stats') {
+    return mdlinks.mdLinks(path, { validate: true }).then((data) => {
+      let sValidate = '';
+      sValidate += colors.white(`✔ Total: ${colors.green(stats.totalStats(data))}\n✔ Uniques: ${colors.green(stats.uniqueStats(data))}\n✖ Broken: ${colors.red(stats.brokenStats(data))}`);
+      return sValidate;
+    });
+  }
   if (options.stats === '--stats') {
     return mdlinks.mdLinks(path, { validate: true }).then((data) => {
       let stat = '';

@@ -55,11 +55,11 @@ const searchRoutemd = (route) => {
   }
   return arrayMdFiles;
 };
-// console.log(searchRoutemd('C:/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/src/Prueba2'));
+// console.log(searchRoutemd('C:/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/prueba'));
 
-// Funcion que devuelve informacion del archivo
+// Funcion que devuelve links
 const readFilePath = (route) => fs.readFileSync(route).toString();
-// console.log(readFilePath('C:/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/src/Prueba2/archivo2.md'));
+// console.log(readFilePath('C:/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/Prueba/probando.md'));
 
 // Funcion que permite extraer links de archivos y los devuelve en array de objetos
 const extraerLinks = (route) => {
@@ -76,7 +76,8 @@ const extraerLinks = (route) => {
     };
     marked(readFilePath(file), { renderer });
   });
-  return arrayLinks;
+  const arrayLinkFilter = arrayLinks.filter((element) => /^(https?:\/\/)/.test(element.href));
+  return arrayLinkFilter;
 };
 // console.log(extraerLinks('/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/prueba'));
 
@@ -107,7 +108,7 @@ const optionValidate = (route) => {
 
 // Si se pasa un array vacío a all , la promesa se cumple inmediatamente.
 // se cumple cuando todas las promesas del iterable dado se han cumplido
-// optionValidate('./test/Prueba').then((res) => console.log(res)).catch((err) => console.log(err));
+// optionValidate('./prueba').then((res) => console.log(res)).catch((err) => console.log(err));
 // optionValidate('C:/Users/katty/Desktop/REPOSITORIOS/LIM014-mdlinks/Prueba').then((res) => console.log(res)).catch((err) => console.log(err));
 
 module.exports = {

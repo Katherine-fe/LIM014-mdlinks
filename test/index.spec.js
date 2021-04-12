@@ -133,11 +133,6 @@ const resultExtraerLinks = [
     text: 'Pill de recursión - video',
     file: '\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\prueba\\probando.md',
   },
-  {
-    href: 'httpas://nodejs.org/es/abouts/',
-    text: 'Acerca de Node.js - Documentación oficial',
-    file: '\\Users\\katty\\Desktop\\REPOSITORIOS\\LIM014-mdlinks\\prueba\\probando.md',
-  },
 ];
 
 describe('extraerLinks', () => {
